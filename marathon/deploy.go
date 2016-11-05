@@ -45,10 +45,14 @@ func Deploy(app, env, tag string) error {
 			if err != nil {
 				return err
 			}
-			if resp.StatusCode != http.StatusOK {
-				return fmt.Errorf("failed to deploy: %s\n", resp.Status)
-			}
 			defer resp.Body.Close()
+			if resp.StatusCode != http.StatusOK {
+				b, err := ioutil.ReadAll(resp.Body)
+				if err != nil {
+					return err
+				}
+				return fmt.Errorf("failed to deploy: %s\n%s\n", resp.Status, string(b))
+			}
 			d := &DeploymentResponse{}
 			if err := json.NewDecoder(resp.Body).Decode(d); err != nil {
 				return err
