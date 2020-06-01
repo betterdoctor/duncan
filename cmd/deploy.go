@@ -22,7 +22,7 @@ import (
 	"strings"
 
 	"github.com/betterdoctor/duncan/deployment"
-	"github.com/betterdoctor/duncan/docker"
+	// "github.com/betterdoctor/duncan/docker"
 	"github.com/betterdoctor/duncan/k8s"
 	"github.com/betterdoctor/kit/notify"
 	"github.com/fatih/color"
