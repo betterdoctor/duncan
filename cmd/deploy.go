@@ -116,11 +116,11 @@ func validateDeployFlags() {
 		repo = app
 	}
 
-	if err := docker.VerifyTagExists(repo, tag); err != nil {
-		prefix := viper.GetString("docker_repo_prefix")
-		fmt.Printf("could not verify %s/%s:%s exists: %s\n", prefix, repo, tag, err)
-		os.Exit(1)
-	}
+	// if err := docker.VerifyTagExists(repo, tag); err != nil {
+	// 	prefix := viper.GetString("docker_repo_prefix")
+	// 	fmt.Printf("could not verify %s/%s:%s exists: %s\n", prefix, repo, tag, err)
+	// 	os.Exit(1)
+	// }
 }
 
 func emoji(env string) string {
